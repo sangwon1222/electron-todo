@@ -1,7 +1,6 @@
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import { app, shell, BrowserWindow, ipcMain, clipboard } from 'electron'
+import { app, shell, BrowserWindow } from 'electron'
 import icon from '../../resources/icon.png?asset'
-const { Menu } = require('electron')
 import { join } from 'path'
 import tray from './tray'
 
@@ -44,46 +43,6 @@ const createWindow = async () => {
     mainWindow.setContentSize(300, 600)
     mainWindow.setMinimumSize(300, 600)
     mainWindow.show()
-    const menu = Menu.buildFromTemplate([
-      { label: app.name.toUpperCase(), icon: clipboard.readImage() },
-      { type: 'separator' },
-      {
-        label: 'Excel',
-        submenu: [
-          {
-            label: 'upload',
-            click: () => {
-              console.log('upload')
-            }
-          },
-          {
-            label: 'delete',
-            click: () => {
-              console.log('delete')
-            }
-          }
-        ]
-      },
-      {
-        label: 'Mode',
-        submenu: [
-          {
-            label: 'kiosk',
-            click: () => {
-              mainWindow.setKiosk(true)
-            }
-          },
-          {
-            label: 'dev',
-            click: () => {
-              mainWindow.setKiosk(false)
-            }
-          }
-        ]
-      },
-      { role: 'reload' }
-    ])
-    Menu.setApplicationMenu(menu)
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
