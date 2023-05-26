@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "lib": ["es2017", "DOM"],
+    "noEmit": true,
+    "baseUrl": "./src",
+  },
+  "include": ["src", "src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
